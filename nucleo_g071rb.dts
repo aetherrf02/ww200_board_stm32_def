@@ -65,7 +65,7 @@
 
 		push_btn: button0 {
 			label = "User";
-			gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
+			gpios = <&gpioa 4 GPIO_PULL_UP>;
 			//zephyr,code = <PUSH_BTN>;
 		};
 
