@@ -26,37 +26,37 @@
 
 	leds: leds {
 		compatible = "gpio-leds";
-		tx_led: led_1 {
+		tx_led: led_0 {
 			gpios = <&gpioc 5 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led0";
 		};
-		cpu_led: led_2 {
+		cpu_led: led_1 {
 			gpios = <&gpioa 5 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led1";
 		};		
-		rssi_0_led: led_4 {
+		rssi_0_led: led_2 {
 			gpios = <&gpioc 10 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led2";
 		};
-		rssi_1_led: led_5 {
+		rssi_1_led: led_3 {
 			gpios = <&gpiob 9 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led3";
 		};
-		rssi_2_led: led_6 {
+		rssi_2_led: led_4 {
 			gpios = <&gpiob 7 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led4";
 		};		
-		rssi_3_led: led_7 {
+		rssi_3_led: led_5 {
 			gpios = <&gpiob 5 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led5";
 		};
-		rssi_4_led: led_8 {
+		rssi_4_led: led_6 {
 			gpios = <&gpiob 4 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led6";
 		};		
-		rssi_5_led: led_9 {
+		rssi_5_led: led_7 {
 			gpios = <&gpiob 3 GPIO_ACTIVE_HIGH>;
-			label = "User LD4";
+			label = "led7";
 		};
 	};
 
@@ -73,25 +73,69 @@
 	wiegand_pins {
     compatible = "gpio-leds"; // A generic compatible for simple GPIO outputs
     
-    wiegand_p0_d0: pin_0 {
-        gpios = <&gpioc 9 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+    wiegand_in_d0: pin_0 {
+        gpios = <&gpiod 0 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
         label = "Wiegand D0";
     };
 
-    wiegand_p0_d1: pin_1 {
-        gpios = <&gpiod 0 GPIO_ACTIVE_LOW>;
+    wiegand_in_d1: pin_1 {
+        gpios = <&gpioc 9 GPIO_ACTIVE_LOW>;
+        label = "Wiegand D1";
+    };
+
+	rex_in: pin_2 {
+        gpios = <&gpiob 8 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+        label = "Wiegand D0";
+    };
+
+    dp_in: pin_3 {
+        gpios = <&gpiob 6 GPIO_ACTIVE_LOW>;
+        label = "Wiegand D1";
+    };
+
+	dout1_ctrl: pin_4 {
+        gpios = <&gpiod 2 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+        label = "Wiegand D0";
+    };
+
+    dout2_ctrl: pin_5 {
+        gpios = <&gpiod 1 GPIO_ACTIVE_LOW>;
+        label = "Wiegand D1";
+    };
+
+	relay_1: pin_6 {
+        gpios = <&gpioc 11 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+        label = "Wiegand D0";
+    };
+
+    relay_2: pin_7 {
+        gpios = <&gpioc 13 GPIO_ACTIVE_LOW>;
         label = "Wiegand D1";
     };
 };
 
 	aliases {
-		push-button = &push_btn;
+		push-btn = &push_btn;
 		watchdog0 = &iwdg;
 		die-temp0 = &die_temp;
 		volt-sensor0 = &vref;
 		volt-sensor1 = &vbat;
-        wiegand-p0-d0 = &wiegand_p0_d0;
-        wiegand-p0-d1 = &wiegand_p0_d1;
+        wiegand-in-d0 = &wiegand_in_d0;
+        wiegand-in-d1 = &wiegand_in_d1;
+		tx-led = &tx_led;
+		cpu-led = &cpu_led;
+		rssi-0-led = &rssi_0_led;
+		rssi-1-led = &rssi_1_led;
+		rssi-2-led = &rssi_2_led;
+		rssi-3-led = &rssi_3_led;
+		rssi-4-led = &rssi_4_led;
+		rssi-5-led = &rssi_5_led;
+		rex-in = &rex_in;
+		dp-in = &dp_in;
+		dout1-ctrl = &dout1_ctrl;
+		dout2-ctrl = &dout2_ctrl;
+		relay-1 = &relay_1;
+		relay-2 = &relay_2;
     };
 };
 
@@ -164,11 +208,11 @@
 	st,prescaler = <10000>;
 	status = "okay";
 
-	pwm3: pwm {
-		status = "okay";
-		pinctrl-0 = <&tim3_ch1_pa6>;
-		pinctrl-names = "default";
-	};
+	// pwm3: pwm {
+	// 	status = "okay";
+	// 	pinctrl-0 = <&tim3_ch1_pa6>;
+	// 	pinctrl-names = "default";
+	// };
 };
 /*
 &i2c1 {
