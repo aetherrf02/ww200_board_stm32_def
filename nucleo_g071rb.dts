@@ -68,51 +68,47 @@
 			gpios = <&gpioa 4 GPIO_ACTIVE_LOW>;
 			//zephyr,code = <PUSH_BTN>;
 		};
+
+		wiegand_in_d0: button1 {
+			gpios = <&gpiod 0 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+			label = "Wiegand D0";
+		};
+
+		wiegand_in_d1: button2 {
+			gpios = <&gpioc 9 GPIO_ACTIVE_LOW>;
+			label = "Wiegand D1";
+		};
+
+		rex_in: button3 {
+			gpios = <&gpiob 8 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+			label = "Wiegand D0";
+		};
+
+		dp_in: button4 {
+			gpios = <&gpiob 6 GPIO_ACTIVE_LOW>;
+			label = "Wiegand D1";
+		};
+
+		dout1_ctrl: button5 {
+			gpios = <&gpiod 2 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+			label = "Wiegand D0";
+		};
+
+		dout2_ctrl: button6 {
+			gpios = <&gpiod 1 GPIO_ACTIVE_LOW>;
+			label = "Wiegand D1";
+		};
+
+		relay_1: button7 {
+			gpios = <&gpioc 11 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
+			label = "Wiegand D0";
+		};
+
+		relay_2: button8 {
+			gpios = <&gpioc 13 GPIO_ACTIVE_LOW>;
+			label = "Wiegand D1";
+		};
 	};
-
-	wiegand_pins {
-    compatible = "gpio-leds"; // A generic compatible for simple GPIO outputs
-    
-    wiegand_in_d0: pin_0 {
-        gpios = <&gpiod 0 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
-        label = "Wiegand D0";
-    };
-
-    wiegand_in_d1: pin_1 {
-        gpios = <&gpioc 9 GPIO_ACTIVE_LOW>;
-        label = "Wiegand D1";
-    };
-
-	rex_in: pin_2 {
-        gpios = <&gpiob 8 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
-        label = "Wiegand D0";
-    };
-
-    dp_in: pin_3 {
-        gpios = <&gpiob 6 GPIO_ACTIVE_LOW>;
-        label = "Wiegand D1";
-    };
-
-	dout1_ctrl: pin_4 {
-        gpios = <&gpiod 2 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
-        label = "Wiegand D0";
-    };
-
-    dout2_ctrl: pin_5 {
-        gpios = <&gpiod 1 GPIO_ACTIVE_LOW>;
-        label = "Wiegand D1";
-    };
-
-	relay_1: pin_6 {
-        gpios = <&gpioc 11 GPIO_ACTIVE_LOW>; // Wiegand is typically active-low
-        label = "Wiegand D0";
-    };
-
-    relay_2: pin_7 {
-        gpios = <&gpioc 13 GPIO_ACTIVE_LOW>;
-        label = "Wiegand D1";
-    };
-};
 
 	aliases {
 		push-btn = &push_btn;
